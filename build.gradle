@@ -1,0 +1,95 @@
+//app-id: 1189110511209604
+buildscript {
+	ext {
+		springBootVersion = '1.5.1.RELEASE'
+	}
+	repositories {
+		mavenCentral()
+	}
+	dependencies {
+		classpath("org.springframework.boot:spring-boot-gradle-plugin:${springBootVersion}")
+	}
+}
+
+subprojects {
+	group = 'bel.tnp'
+	apply plugin: 'java'
+	apply plugin: 'org.springframework.boot'
+
+	sourceCompatibility = 1.8
+	targetCompatibility = 1.8
+	compileJava.options.encoding = 'UTF-8'
+
+	repositories {
+		mavenLocal()
+		mavenCentral()
+	}
+
+	dependencies{
+		//spring-boot
+		compile ('org.springframework.boot:spring-boot-starter')
+		compile ('org.springframework.boot:spring-boot-starter-web')
+		compile ('org.springframework.boot:spring-boot-starter-security')
+		compile ('org.springframework.boot:spring-boot-starter-actuator')
+		compile ('org.springframework.boot:spring-boot-starter-freemarker')
+
+		//spring-security
+		compile ('org.springframework.security:spring-security-core')
+		compile ('org.springframework.security.oauth:spring-security-oauth2')
+		compile ('org.springframework.security:spring-security-jwt')
+
+		//test
+		testCompile('org.springframework.boot:spring-boot-starter-test')
+		testCompile ('org.apache.httpcomponents:httpclient')
+		testCompile ('junit:junit')
+
+		//spring-social-facebook
+		compile 'org.springframework.social:spring-social-facebook:2.0.3.RELEASE'
+
+		//lombook
+		compile ('org.projectlombok:lombok')
+
+		// jackson2
+		compile ('com.fasterxml.jackson.core:jackson-databind')
+
+	}
+}
+
+apply plugin: 'java'
+apply plugin: 'org.springframework.boot'
+
+jar {
+	baseName = 'demo'
+	version = '0.0.1-SNAPSHOT'
+}
+
+sourceCompatibility = 1.8
+
+repositories {
+	mavenCentral()
+}
+
+
+dependencies {
+
+	//spring-boot
+	compile ('org.springframework.boot:spring-boot-starter')
+	compile ('org.springframework.boot:spring-boot-starter-web')
+	compile ('org.springframework.boot:spring-boot-starter-security')
+	compile ('org.springframework.boot:spring-boot-starter-actuator')
+	compile ('org.springframework.boot:spring-boot-starter-freemarker')
+
+	//spring-security
+	compile ('org.springframework.security:spring-security-core')
+	compile ('org.springframework.security.oauth:spring-security-oauth2')
+	compile ('org.springframework.security:spring-security-jwt')
+
+	//compile group: 'org.apache.httpcomponents', name: 'httpclient', version: '4.0-alpha4'
+
+
+	testCompile('org.springframework.boot:spring-boot-starter-test')
+
+	compile project('auth-server')
+	compile project('resources-server')
+	compile project('ui')
+}

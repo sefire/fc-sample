@@ -1,0 +1,70 @@
+server.port: 8080
+server.address: 127.0.0.1
+
+
+#373151098925-khp7qhtmet5imvop7reipjpi4ipbm1th.apps.googleusercontent.com
+#8sH1y0FwacAAB-TArWDK9Z60
+
+#https://accounts.google.com/o/oauth2/auth?client_id=XXXXX&redirect_uri=http://localhost:8080/WEBAPP/youtube-callback.html&response_type=code&scope=https://www.googleapis.com/auth/youtube.upload
+
+myAuth:
+    client:
+      accessTokenUri: http://localhost:9999/uaa/oauth/token
+      userAuthorizationUri: http://localhost:9999/uaa/oauth/authorize
+      clientId: myclient
+      clientSecret: myclientsecret
+      grant-type: authorization_code
+      scope: read
+    resource:
+      userInfoUri: http://localhost:9999/uaa/user
+
+facebook:
+    client:
+      clientId: 1189110511209604
+      clientSecret: 5d3bef32631e0d5c926f46d209cad34b
+      accessTokenUri: https://graph.facebook.com/oauth/access_token
+      userAuthorizationUri: https://www.facebook.com/dialog/oauth
+      tokenName: oauth_token
+      authenticationScheme: query
+      clientAuthenticationScheme: form
+    resource:
+      userInfoUri: https://graph.facebook.com/me
+
+google:
+  client:
+    clientId: 373151098925-khp7qhtmet5imvop7reipjpi4ipbm1th.apps.googleusercontent.com
+    clientSecret: 8sH1y0FwacAAB-TArWDK9Z60
+    accessTokenUri:  https://accounts.google.com/o/oauth2/token
+    userAuthorizationUri: https://accounts.google.com/o/oauth2/auth
+    authenticationScheme: query
+    clientAuthenticationScheme: query
+    scope: profile
+  resource:
+    userInfoUri: https://www.googleapis.com/plus/v1/people/me
+
+github:
+  client:
+    clientId: bd1c0a783ccdd1c9b9e4
+    clientSecret: 1a9030fbca47a5b2c28e92f19050bb77824b5ad1
+    accessTokenUri: https://github.com/login/oauth/access_token
+    userAuthorizationUri: https://github.com/login/oauth/authorize
+    clientAuthenticationScheme: form
+  resource:
+    userInfoUri: https://api.github.com/user
+
+vk:
+          client:
+            clientId: 5910725
+            clientSecret: XOGfHwsOPWHKSukUHhy5
+            accessTokenUri: https://oauth.vk.com/access_token
+            userAuthorizationUri: https://oauth.vk.com/authorize
+            tokenName: code
+            authenticationScheme: query
+            clientAuthenticationScheme: form
+            grant-type: authorization_code
+          resource:
+            userInfoUri: https://api.vk.com/method/users.get
+
+
+
+#https://api.facebook.com/restserver.php?method=auth.expireSession&format=json&access_token=<access_token>
